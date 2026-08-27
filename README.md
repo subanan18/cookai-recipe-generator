@@ -105,11 +105,11 @@ cookai-recipe-generator/
 │   └── utils/
 │       └── ingredients.js
 ├── screenshots/
+│   └── demo.jpg
 ├── docs/
 │   └── ARCHITECTURE.md
-├── background.jpg
-├── user_icon.jpg
 ├── .env.example
+├── .gitignore
 ├── app.json
 ├── babel.config.js
 ├── metro.config.js
