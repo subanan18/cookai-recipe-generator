@@ -2,175 +2,173 @@
 
 # 🍳 cookAI — Intelligent Recipe Generator
 
-### Turn ingredients into recipe ideas using AI-powered image recognition and recipe discovery
+### React Native • Expo • Google Vision • Edamam • Recipe Intelligence
 
-![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Google Cloud](https://img.shields.io/badge/Google_Vision-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)
-![API](https://img.shields.io/badge/Recipe_API-Edamam-6DB33F?style=for-the-badge)
-![Status](https://img.shields.io/badge/University-Final_Year_Project-blue?style=for-the-badge)
+A mobile recipe-discovery application that turns **photos of ingredients into practical recipe suggestions**, with calorie filtering, missing-ingredient analysis and recipe-detail extraction.
+
+![React Native](https://img.shields.io/badge/React_Native-0.72-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Expo](https://img.shields.io/badge/Expo-49-000020?style=for-the-badge&logo=expo)
+![Google Vision](https://img.shields.io/badge/Google_Vision-Computer_Vision-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)
+![Edamam](https://img.shields.io/badge/Edamam-Recipe_API-6DB33F?style=for-the-badge)
 
 </div>
 
 ---
 
-## 🥗 Overview
+## 🎯 Problem
 
-**cookAI** is an intelligent recipe-discovery application developed as a Computer Science final-year project.
+People often have ingredients at home but still struggle to answer: **“What can I cook with what I already have?”**
 
-The idea is simple: instead of deciding what to cook first and then buying ingredients, cookAI helps users start with **ingredients they already have**.
+cookAI was built as my Computer Science final-year project to explore how mobile UX, computer vision and external recipe data can reduce that friction.
 
-Users can provide ingredient information—including through images—and the application helps identify ingredients, discover suitable recipes and apply dietary or availability filters.
+## 📱 App in action
 
----
+<p align="center">
+  <img src="screenshots/demo.jpg" width="900" alt="cookAI ingredient image flowing into recipe recommendations" />
+</p>
 
-## 💡 The Problem
+The original mobile prototype demonstrates ingredient selection, computer-vision-based recognition, recipe results, calorie filtering, missing ingredients and recipe-detail modals.
 
-People often have food at home but still struggle with the question:
+## ✨ Core features
 
-> **"What can I cook with what I already have?"**
+- 📷 Capture an ingredient with the camera or choose images from the gallery
+- 👁️ Send image content to **Google Vision** for label detection
+- 🧠 Normalise detected labels into supported food ingredients
+- ⚠️ Exclude configured allergens before recipe search
+- 🍽️ Search the **Edamam API** using the recognised ingredients
+- 🔎 Restrict recipe results to supported recipe sources
+- 🧾 Compare recognised ingredients against each recipe and show **missing ingredients**
+- 🔢 Filter recipe results by calorie range
+- 🌍 Display diet, meal, dish and cuisine metadata
+- 📖 Extract recipe ingredients and preparation methods for an in-app details modal
+- 🔥 Surface trending recipes on the discovery screen
 
-This can lead to unnecessary shopping and unused ingredients.
-
-cookAI explores how computer vision, APIs and a user-friendly interface can make recipe discovery more contextual and convenient.
-
----
-
-## ✨ Features
-
-- 📷 Select/upload ingredient images
-- 👁️ Detect ingredient information using **Google Vision API**
-- 🍽️ Search recipes through the **Edamam API**
-- 🥬 Vegan and dietary filtering
-- ⚠️ Allergen-aware filtering
-- 🚫 Exclude ingredients the user does not have/want
-- 🧾 Identify missing ingredients for recipes
-- 🌐 Recipe information extraction / web-data integration
-- 📱 User-focused React / React Native interface experimentation
-
----
-
-## 🔄 How It Works
+## 🧠 How it works
 
 ```text
-┌─────────────────────┐
-│ User adds ingredients│
-│  / selects an image │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Google Vision API   │
-│ Ingredient Detection│
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Filters & Ingredient│
-│ Processing          │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Edamam Recipe API   │
-│ + Recipe Sources    │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Relevant Recipes +  │
-│ Missing Ingredients │
-└─────────────────────┘
+Camera / Gallery
+      │
+      ▼
+Expo ImagePicker + FileSystem
+      │
+      ▼
+Google Vision label detection
+      │
+      ▼
+Ingredient normalisation
+      │
+      ├── allergen filtering
+      └── duplicate removal
+      │
+      ▼
+Edamam recipe search
+      │
+      ├── calories / diet / cuisine metadata
+      ├── missing-ingredient calculation
+      └── source recipe URL
+                 │
+                 ▼
+          Recipe extraction
+                 │
+                 ▼
+      Ingredients + method modal
 ```
 
----
+A more detailed architecture note is available in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 
-## 🛠️ Technology Stack
+## 🛠️ Technology
 
-| Category | Technology |
+| Area | Technology |
 |---|---|
-| Frontend | React.js / React Native |
-| Mobile tooling | Expo |
+| Mobile UI | React Native |
+| Development platform | Expo |
 | Language | JavaScript |
-| HTTP client | Axios |
-| Image selection | Expo ImagePicker |
-| File handling | Expo FileSystem |
+| Navigation | React Navigation |
+| Image capture | Expo ImagePicker |
+| Local image processing | Expo FileSystem |
 | Computer vision | Google Vision API |
-| Recipe data | Edamam API |
-| Web-data parsing | Cheerio |
+| Recipe discovery | Edamam API |
+| HTTP | Axios |
+| HTML parsing | Cheerio |
 
----
-
-## 🧠 Key Technical Concepts
-
-The project gave me practical experience combining several parts of a modern application:
-
-- Third-party REST API integration
-- Asynchronous JavaScript
-- Image/file processing
-- Computer-vision API integration
-- Data filtering and transformation
-- Web data extraction
-- Frontend state and UI development
-- User-centred application design
-- Handling multiple external data sources
-
----
-
-## 🎓 Academic Context
-
-cookAI was developed as part of my **BSc Computer Science final-year work at Middlesex University London**.
-
-The project combines software engineering with applied AI concepts to solve an everyday problem through a practical application.
-
----
-
-## 🚀 Future Improvements
-
-- [ ] Modernise the original application architecture
-- [ ] Improve ingredient recognition accuracy
-- [ ] Add an LLM-powered recipe assistant
-- [ ] Add Retrieval-Augmented Generation (RAG) for recipe knowledge
-- [ ] Personalised recipe recommendations
-- [ ] Nutrition summaries
-- [ ] Saved favourites and cooking history
-- [ ] Shopping-list generation
-- [ ] Better allergy and dietary controls
-- [ ] Cloud deployment
-- [ ] Automated tests and CI/CD
-
----
-
-## 🔐 API Key Safety
-
-API keys must not be committed to the repository. Public source code should use environment variables and example configuration files.
+## 📂 Repository structure
 
 ```text
-.env
-.env.local
-*.key
+cookai-recipe-generator/
+├── App.js
+├── index.js
+├── src/
+│   ├── CookAIApp.js
+│   ├── services/
+│   │   ├── vision.js
+│   │   └── recipes.js
+│   └── utils/
+│       └── ingredients.js
+├── screenshots/
+├── docs/
+│   └── ARCHITECTURE.md
+├── background.jpg
+├── user_icon.jpg
+├── .env.example
+├── app.json
+├── babel.config.js
+├── metro.config.js
+└── package.json
 ```
 
----
+## 🚀 Run locally
 
-## 🌟 What This Project Demonstrates
+This repository contains a cleaned public version of the original university prototype. It does **not** contain live API credentials.
 
-`React` • `JavaScript` • `REST APIs` • `Computer Vision` • `Google Vision` • `Data Processing` • `UI/UX` • `Applied AI`
+```bash
+npm install
+cp .env.example .env.local
+npm start
+```
 
----
+Add your own development credentials to `.env.local`:
 
-## 👨‍💻 Author
+```env
+EXPO_PUBLIC_GOOGLE_VISION_API_KEY=your_google_vision_api_key
+EXPO_PUBLIC_EDAMAM_APP_ID=your_edamam_app_id
+EXPO_PUBLIC_EDAMAM_APP_KEY=your_edamam_app_key
+```
 
-**Subanan Subathevan**  
-BSc Computer Science — First Class Honours
+Then launch the project with Expo on Android, iOS or web.
 
-[![GitHub](https://img.shields.io/badge/GitHub-subanan18-181717?style=for-the-badge&logo=github)](https://github.com/subanan18)
-[![Portfolio](https://img.shields.io/badge/Portfolio-Visit-000000?style=for-the-badge&logo=vercel)](https://subanan18.github.io/)
+## 🔐 Security note
+
+The original student prototype used development API credentials directly in the mobile source. Those values have been **removed from the public repository** and replaced by environment-based configuration.
+
+For a production application, calls requiring private credentials should be moved behind a backend/API proxy because `EXPO_PUBLIC_*` variables are bundled into the client and should not be treated as secret storage.
+
+## 🧪 Engineering decisions demonstrated
+
+`Computer vision integration` • `Async API workflows` • `Image/base64 processing` • `Data filtering` • `Missing-data comparison` • `Recipe metadata modelling` • `Mobile UX` • `Third-party API integration`
+
+## 🗺️ Next improvements
+
+- [ ] Move Vision and recipe credentials behind a backend service
+- [x] Split API and ingredient logic into focused service/utility modules
+- [ ] Replace source-page scraping with a stable recipe-detail provider where possible
+- [ ] Add persisted user profiles and configurable allergens
+- [ ] Add automated tests for ingredient normalisation and missing-ingredient logic
+- [ ] Add saved recipes and shopping-list generation
+- [ ] Add an LLM/RAG recipe assistant as a separate, testable feature
+
+## 🎓 Academic context
+
+cookAI was developed as part of my **BSc Computer Science final-year work at Middlesex University London**. The public repository preserves the real project concept and implementation while removing local build artefacts, machine-specific paths and development credentials.
 
 ---
 
 <div align="center">
 
-### 🍽️ From ingredients → intelligence → inspiration.
+**Subanan Subathevan**  
+First Class Honours BSc Computer Science
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-Explore_My_Work-000000?style=for-the-badge&logo=vercel)](https://subanan18.github.io/)
+
+### From ingredients → recognition → recipes. 🍽️
 
 </div>
