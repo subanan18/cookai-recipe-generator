@@ -1,0 +1,8 @@
+{
+  "expo": {
+    "name":"cookAI","slug":"cookai-recipe-generator","version":"1.0.0","orientation":"portrait","userInterfaceStyle":"dark","assetBundlePatterns":["**/*"],
+    "plugins":[["expo-image-picker",{"photosPermission":"Allow cookAI to select ingredient photos.","cameraPermission":"Allow cookAI to photograph ingredients."}]],
+    "ios":{"supportsTablet":true},
+    "android":{"package":"com.subanan.cookai"}
+  }
+}
