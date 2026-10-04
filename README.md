@@ -172,3 +172,16 @@ First Class Honours BSc Computer Science
 ### From ingredients → recognition → recipes. 🍽️
 
 </div>
+
+## 💻 Development workflow
+
+For local development, start the Expo dev server with `npm start`, then use the Android, iOS or web scripts in `package.json` depending on the target platform. Keep API credentials in `.env.local` and never commit them.
+
+A useful validation pass before publishing changes is:
+
+- confirm camera/gallery selection still works;
+- verify ingredient labels are normalised correctly;
+- test recipe filtering and missing-ingredient calculations;
+- check empty/error API states on mobile-sized screens;
+- review that no credentials or generated local files are staged.
+
